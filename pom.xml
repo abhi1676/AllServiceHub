@@ -11,7 +11,7 @@
 	<groupId>com.allServiceHub</groupId>
 	<artifactId>AllServiceHub</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>digirojgar</name>
+	<name>AllServiceHub</name>
 	<description>wjp mini project</description>
 	<properties>
 		<java.version>11</java.version>
