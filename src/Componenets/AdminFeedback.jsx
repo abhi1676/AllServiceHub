@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Alert, Button, Container, Modal, Table } from "react-bootstrap";
 import styled from "styled-components";
 import { deleteFeedbackFromDatabase, getAllFeedbackFromDatabase } from "../Service/controller";
-
+import { Link } from "react-router-dom";
 export function AdminFeedback() {
 
     const [feedbackList, setFeedbackList] = useState([]);
@@ -74,14 +74,9 @@ export function AdminFeedback() {
                 <div className="row">
                       <div className="col">
                         <div id="postJob" className="col-1 m-auto">
-                          <button
-                            type="submit"
-                            className="btn btn-dark mt-5"
-                          ><a href= "/adminhome">
-                             BACK
-                          </a>
-                           
-                          </button>
+                        <Link to="/adminhome" className="btn btn-dark mt-5">
+                          BACK
+                        </Link>
                         </div>
                       </div>
                     </div>

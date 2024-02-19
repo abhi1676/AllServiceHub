@@ -1,17 +1,16 @@
-import { Button } from "bootstrap";
+import { Link } from 'react-router-dom'; // Import Link component
 import styled from "styled-components";
 import { endSession } from "../Service/controller";
 
 export function Navbar() {
-
   return (
     <>
       <NavbarContainer>
         <section>
           <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand heading" href="#">
-            AllServiceHub
-            </a>
+            <Link className="navbar-brand heading" to="/">
+              AllServiceHub
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -26,46 +25,46 @@ export function Navbar() {
             <div className="collapse navbar-collapse navdiv" id="navbarNav">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                  <a className="nav-link" href="/">
+                  <Link className="nav-link" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/about">
+                  <Link className="nav-link" to="/about">
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/contact">
+                  <Link className="nav-link" to="/contact">
                     Contact
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/feedback">
+                  <Link className="nav-link" to="/feedback">
                     Feedback
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link" href="/login">
+                  <Link className="nav-link" to="/login">
                     Employer Login
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/employeelogin">
+                  <Link className="nav-link" to="/employeelogin">
                     Employee Login
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/adminlog">
+                  <Link className="nav-link" to="/adminlog">
                     Admin Login
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/reg">
+                  <Link className="nav-link" to="/reg">
                     Register
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -77,21 +76,15 @@ export function Navbar() {
 }
 
 const NavbarContainer = styled.section`
-
-section{
+  section {
     top: 0;
-    position : fixed;
-}
-.heading{
-
+    position: fixed;
+  }
+  .heading {
     margin-left: 40px;
-}
-.navdiv{
-
-    display:flex;
+  }
+  .navdiv {
+    display: flex;
     justify-content: space-between;
-
-
-}
-
+  }
 `;

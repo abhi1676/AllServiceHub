@@ -2,6 +2,7 @@ import { Component } from "react";
 import styled from "styled-components";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom"; // Import Link from React Router
 import { saveJob } from "../Service/controller";
 
 export class PostJob extends Component {
@@ -31,7 +32,7 @@ export class PostJob extends Component {
     event.preventDefault();
     const response = await saveJob(this.state.formData);
     console.log(response.data);
-    if (response.status == 200) {
+    if (response.status === 200) {
       this.setState({
         formData: { title: "", date: "", location: "", mobno: "" },
       });
@@ -40,21 +41,16 @@ export class PostJob extends Component {
     }
   };
 
- 
-  alertMsg = () =>{
-
+  alertMsg = () => {
     Swal.fire({
       title: "Success!!!",
       text: "Job Posted Successfully",
       icon: "success",
       buttons: "OK",
-    }).then(()=>{
-      
-      window.location="/postjob";
-    })
-    
-
-  }
+    }).then(() => {
+      window.location = "/postjob";
+    });
+  };
 
   render() {
     return (
@@ -69,7 +65,7 @@ export class PostJob extends Component {
                       <h1 className="display1 mt-5" />
                     </div>
                   </div>
-                  <form  onSubmit={this.handleSubmit}>
+                  <form onSubmit={this.handleSubmit}>
                     <div className="row">
                       <div className="col-md-3">
                         <label htmlFor="" className="form-label" />{" "}
@@ -119,30 +115,26 @@ export class PostJob extends Component {
                     <div className="row">
                       <div className="col">
                         <div id="postJob" className="col-1 m-auto">
-                          <button
-                            type="submit"
-                            className="btn btn-success mt-5"
-                          >
-                            Post Job
-                          </button>
+                        <button
+                         type="submit"
+                  className="btn btn-success mt-5"
+                  style={{ whiteSpace: "nowrap" }} 
+      >
+  Post Service
+</button>
                         </div>
                       </div>
                     </div>
                   </form>
                   <div className="row">
-                      <div className="col">
-                        <div id="postJob" className="col-1 m-auto">
-                          <button
-                            type="submit"
-                            className="btn btn-dark mt-5"
-                          ><a href= "/employer">
-                             BACK
-                          </a>
-                           
-                          </button>
-                        </div>
+                    <div className="col">
+                      <div id="postJob" className="col-1 m-auto">
+                        <Link to="/employer" className="btn btn-dark mt-5">
+                          BACK
+                        </Link>
                       </div>
                     </div>
+                  </div>
                 </div>
               </header>
             </main>

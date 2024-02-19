@@ -1,133 +1,118 @@
-import { Component } from "react";
-import { redirect } from "react-router-dom";
+import { useState } from "react";
 import styled from "styled-components";
 import swal from "sweetalert";
 import { saveContact } from "../Service/controller";
 
-export class Contact extends Component {
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      formData: {},
-      defaultValue: {
-        name:"",
-        email:"",
-        message:"",
-      }
-    };
-  }
+export const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  handleChange = (event) => {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [event.target.name]: event.target.value,
-      },
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
     });
   };
 
-  handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await saveContact(this.state.formData);
+    const response = await saveContact(formData);
     console.log(response.data);
-    if (response.status == 200) {
-      this.setState({
-        formData: { name: "", email: "", message: "" },
+    if (response.status === 200) {
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
       });
-
-      this.alertMsg();
+      alertMsg();
     }
   };
 
-  alertMsg = () =>{
-
+  const alertMsg = () => {
     swal({
       title: "Success!!!",
-      text: "Account Created Successfully",
+      text: "Thank you for reaching out to us!",
       icon: "success",
       buttons: "OK",
-    })
-  }
+    });
+  };
 
-
-  render() {
-    return (
-      <>
-        <ContactContainer>
-          <section>
-            <div className="line">
-                <p>Have a question? Feel feel to contact us.</p>
-            </div>
-            <form className="container" onSubmit={this.handleSubmit}> 
+  return (
+    <>
+      <ContactContainer>
+        <section>
+          <div className="line">
+            <p>Have a question? Feel feel to contact us.</p>
+          </div>
+          <form className="container" onSubmit={handleSubmit}>
             <div className="heading">
-                <h2>Contact Form</h2>
+              <h2>Contact Form</h2>
             </div>
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  placeholder="Enter your name"
-                  name="name"
-                  value={this.state.formData.name}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <br></br>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder="Enter your email"
-                  name="email"
-                  value={this.state.formData.email}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <br></br>
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  className="form-control"
-                  id="message"
-                  rows={3}
-                  defaultValue={""}
-                  name="message"
-                  value={this.state.formData.message}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <br></br>
-              <button type="submit" className="btn btn-dark">
-                Submit
-              </button>
-            </form>
-          </section>
-        </ContactContainer>
-      </>
-    );
-  }
-}
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                placeholder="Enter your name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Enter your email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                className="form-control"
+                id="message"
+                rows={3}
+                defaultValue={""}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+            <button type="submit" className="btn btn-dark">
+              Submit
+            </button>
+          </form>
+        </section>
+      </ContactContainer>
+    </>
+  );
+};
 
 const ContactContainer = styled.section`
-section {
+  section {
     padding: 90px;
     background: url("/img/home/banner.jpg");
   }
 
-  .line{
-
+  .line {
     text-align: center;
   }
 
-  .line p{
-
+  .line p {
     font-size: 25px;
-    color : white;
+    color: white;
   }
   .container {
     width: 70vh;
@@ -137,13 +122,13 @@ section {
     background-color: white;
   }
 
-  .heading{
-
-    margin-left : 25%;
+  .heading {
+    margin-left: 25%;
   }
 
-  .btn{
-
+  .btn {
     margin-left: 40%;
   }
 `;
+
+

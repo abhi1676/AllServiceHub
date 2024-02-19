@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
+
 
 export const About = () => {
   return (
@@ -22,12 +24,9 @@ export const About = () => {
                       when you are in a hurry or not in the mood to take any crap on your loving holiday. We will help you to get services at your doorsteps, 
                       just like you get home deliveries of your favorite products.
                     </p>
-                    <div className="button">
-                    
-                      <a href="http://localhost:3000/" className="btn btn-primary">
-                        Know More About us 
-                      </a>
-                    </div>
+                    <div className="button" >
+                <Link to="/" className="btn btn-primary" >Know More About us</Link>
+                  </div>
                   </div>
                 </>
               </div>

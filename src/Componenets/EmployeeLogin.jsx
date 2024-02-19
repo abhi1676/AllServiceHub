@@ -1,179 +1,142 @@
-
-import { Component } from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { checkUser} from "../Service/controller";
+import { checkUser } from "../Service/controller";
 
-export class EmployeeLogin extends Component {
+export const EmployeeLogin = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    pass: "",
+  });
+  const [errors, setErrors] = useState({});
 
-  constructor(){
-    super();
-    this.state = {
-      formData: {},
-      errors: {},
-      defaultValue: {
-        email:"",
-        pass:"",
-      },
-    
-    };
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [event.target.name]: event.target.value,
-      },
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
     });
   };
-  
-  handleSubmit = async (event) => {
 
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if(this.validate()){     
-    const response = await checkUser(this.state.formData.email);
-    console.log(response.data);
-    if (response.status == 200) {
-      this.setState({
-        formData: { email: "", pass:""},
-      });
-      
-      this.alertMsg();
-      
-    }
+    if (validate()) {
+      const response = await checkUser(formData.email);
+      console.log(response.data);
+      if (response.status === 200) {
+        setFormData({ email: "", pass: "" });
+        alertMsg();
+      }
     }
   };
 
-  validate(){
-
-    
-    let formData = this.state.formData;
+  const validate = () => {
     let errors = {};
     let isValid = true;
 
-    if(!formData["email"]){
-
+    if (!formData.email) {
       isValid = false;
-      errors["email"] = "please enter email address"
+      errors.email = "Please enter email address";
     }
 
-    if (typeof formData["email"] !== "undefined") {
-          
+    if (typeof formData.email !== "undefined") {
       var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-      if (!pattern.test(formData["email"])) {
+      if (!pattern.test(formData.email)) {
         isValid = false;
-        errors["email"] = "Please enter valid email address.";
+        errors.email = "Please enter valid email address.";
       }
     }
 
-    
-    if (!formData["pass"]) {
+    if (!formData.pass) {
       isValid = false;
-      errors["pass"] = "Please enter your password.";
+      errors.pass = "Please enter your password.";
     }
 
-    
-    if (typeof formData["pass"] !== "undefined") {
-      if(formData["pass"].length < 6){
-          isValid = false;
-          errors["pass"] = "Please add at least 6 charachter.";
+    if (typeof formData.pass !== "undefined") {
+      if (formData.pass.length < 6) {
+        isValid = false;
+        errors.pass = "Please add at least 6 characters.";
       }
     }
 
-    
-    this.setState({
-      errors: errors
-    });
-
+    setErrors(errors);
     return isValid;
+  };
 
-  }
-
-  alertMsg = () =>{
-
-    
+  const alertMsg = () => {
     Swal.fire({
       title: "Success!!!",
       text: "Credentials Matched",
       icon: "success",
       buttons: "OK",
     }).then(() => {
-      
-      window.location="/searchjob";
-    })
-    
-  }
+      window.location = "/searchjob";
+    });
+  };
 
-  
-  render(){
-    return (
-      <>
-        <LoginContainer>
-          <section className="back"onSubmit={this.handleSubmit} >
-            <Form className="container">
+  return (
+    <>
+      <LoginContainer>
+        <section className="back">
+          <Form className="container" onSubmit={handleSubmit}>
             <div className="header">
-                <h3>Employee Login</h3>
-              </div>
-              <Form.Group controlid="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  name="email"
-                  value={this.state.formData.email}
-                  onChange={this.handleChange}
-                ></Form.Control>
-                <div className="text-danger">{this.state.errors.email}</div>
-              </Form.Group>
-              <Form.Group controlid="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  name="pass"
-                  value={this.state.formData.pass}
-                  onChange={this.handleChange}
-                ></Form.Control>
-                <div className="text-danger">{this.state.errors.pass}</div>
-              </Form.Group>
-              <Button className="btn btn-dark" type="submit">
-                Submit
-              </Button>
-            </Form>
-          </section>
-        </LoginContainer>
-      </>
-    );
-  }
-}
+              <h3>Employee Login</h3>
+            </div>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <div className="text-danger">{errors.email}</div>
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="pass"
+                value={formData.pass}
+                onChange={handleChange}
+              />
+              <div className="text-danger">{errors.pass}</div>
+            </Form.Group>
+            <Button className="btn btn-dark" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </section>
+      </LoginContainer>
+    </>
+  );
+};
 
 const LoginContainer = styled.section`
+  section {
+    padding-top: 20vh;
+  }
 
-section{
+  h3 {
+    margin-left: 20%;
+    margin-bottom: 10x;
+  }
 
-  padding-top: 20vh;
-}
+  .container {
+    width: 50vh;
+    border: solid black 2px;
+    border-radius: 10px;
+    padding: 20px;
+    height: 45vh;
+    background-color: white;
+  }
 
-h3{
-
-  margin-left : 20%;
-  margin-bottom : 10x;
-}
-.container {
-  width: 50vh;
-  border: solid black 2px;
-  border-radius: 10px;
-  padding: 20px;
-  height: 45vh;
-  background-color: white;
-}
-
-.btn{
-
-  margin-top : 20px;
-  margin-left : 35%;
-}
-
+  .btn {
+    margin-top: 20px;
+    margin-left: 35%;
+  }
 `;
+
+

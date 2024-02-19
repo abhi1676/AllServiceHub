@@ -3,7 +3,7 @@ import { Alert, Button, Container, Modal, Table } from "react-bootstrap";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { deleteJobFromDatabase, getAllJobsFromDatabase } from "../Service/controller";
-
+import { Link } from "react-router-dom";
 export function EmployeeJob() {
 
     const [jobList, setJobList] = useState([]);
@@ -56,7 +56,7 @@ export function EmployeeJob() {
             <section className="alltestlist">
             <Container className="mt-4 mb-4 text-center">
                 <Alert>
-                    All Job Details
+                    All Service Details
                 </Alert>
             </Container>
             <Container>
@@ -95,13 +95,9 @@ export function EmployeeJob() {
                 <div className="row">
                       <div className="col">
                         <div id="postJob" className="col-1 m-auto">
-                          <button
-                            type="submit"
-                            className="btn btn-danger mt-5"
-                          ><a href= "/searchjob">
-                             BACK
-                          </a>
-                          </button>
+                        <Link to="/searchjob" className="btn btn-dark mt-5">
+                          BACK
+                        </Link>
                         </div>
                     
                       </div>

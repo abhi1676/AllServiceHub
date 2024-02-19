@@ -1,6 +1,7 @@
 import { Component } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom"; // Import Link from React Router
 import { savePayment } from "../Service/controller";
 
 export class Payment extends Component {
@@ -33,7 +34,7 @@ export class Payment extends Component {
 
     const response = await savePayment(this.state.formData);
     console.log(response.data);
-    if (response.status == 200) {
+    if (response.status === 200) {
       this.setState({
         formData: {
           cardNo: "",
@@ -158,9 +159,10 @@ export class Payment extends Component {
             <div className="row">
               <div className="col">
                 <div id="postJob" className="col-1 m-auto">
-                  <button type="submit" className="btn btn-danger mt-5">
-                    <a href="/employer">BACK</a>
-                  </button>
+                  {/* Replaced anchor tag with Link component */}
+                  <Link to="/employer" className="btn btn-danger mt-5">
+                    BACK
+                  </Link>
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Alert,  Container, Table } from "react-bootstrap";
 import styled from "styled-components";
 import { getAllAdminFromDatabase } from "../Service/controller";
-
+import { Link } from "react-router-dom";
 export function AllAdmins() {
   const [adminList, setAdminList] = useState([]);
  
@@ -50,14 +50,9 @@ export function AllAdmins() {
             <div className="row">
                       <div className="col">
                         <div id="postJob" className="col-1 m-auto">
-                          <button
-                            type="submit"
-                            className="btn btn-dark mt-5"
-                          ><a href= "/adminhome">
-                             BACK
-                          </a>
-                           
-                          </button>
+                        <Link to="/adminhome" className="btn btn-dark mt-5">
+                          BACK
+                        </Link>
                         </div>
                       </div>
                     </div>

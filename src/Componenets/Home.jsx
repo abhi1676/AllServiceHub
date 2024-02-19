@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 export function Home() {
   return (
@@ -22,7 +23,7 @@ export function Home() {
                   </h1>
                 </div>
               </div>
-              <form action="http://localhost:3000/employeelogin">
+              <form >
     <div className="row">
         <div className="col-md-4">
             <label htmlFor="" className="form-label" />{" "}
@@ -50,7 +51,9 @@ export function Home() {
     <div className="row">
         <div className="col">
             <div id="searchjob" className="col-2 m-auto">
-                <button type='submit' class='btn btn-success mt-5'>search</button>
+            <Link to="/login" className="btn btn-success mt-5">
+  Search
+</Link>
             </div>
         </div>
     </div>

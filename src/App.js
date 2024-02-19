@@ -9,7 +9,7 @@ import { Home } from './Componenets/Home';
 import { Payment } from './Componenets/Payment';
 import { Faq } from './Componenets/Faq';
 import { About } from './Componenets/About';
-import { Feedback } from './Componenets/Feedback';
+import  Feedback  from './Componenets/Feedback';
 import { Contact } from './Componenets/Contact';
 import { AdminContact } from './Componenets/AdminContact';
 import { PostJob } from './Componenets/PostJob';

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Alert, Button, Container, Modal, Table } from "react-bootstrap";
 import styled from "styled-components";
 import { deleteUserFromDatabase, getAllUserFromDatabase } from "../Service/controller";
-
+import { Link } from "react-router-dom"
 export function AdminAllUser() {
 
     const [userList, setUserList] = useState([]);
@@ -70,6 +70,7 @@ export function AdminAllUser() {
                                         <td>{user.district}</td>
                                         <td>{user.state}</td>
                                         <td><Button variant="danger" className="btn-sm" onClick={() => {
+                                           
                                             setSelectedUserId(user.id);
                                            openModal();
                                         }}>Delete</Button></td>
@@ -82,14 +83,9 @@ export function AdminAllUser() {
                 <div className="row">
                       <div className="col">
                         <div id="postJob" className="col-1 m-auto">
-                          <button
-                            type="submit"
-                            className="btn btn-dark mt-5"
-                          ><a href= "/adminhome">
-                             BACK
-                          </a>
-                           
-                          </button>
+                        <Link to="/adminhome" className="btn btn-dark mt-5">
+                          BACK
+                        </Link>
                         </div>
                       </div>
                     </div>

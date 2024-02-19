@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export function AdminHome() {
   
@@ -9,55 +10,47 @@ export function AdminHome() {
           <div className="header_emp">
             <div className="navbar_emp container-fluid">
               <div className="navigation_bar_emp">
-                
-              <div className="headtag">
-                    <p>Welcome</p>
-                    </div>
-                  
+                <div className="headtag">
+                  <p>Welcome</p>
+                </div>
                 <br></br>
                 <br></br>
-                  <div className="headcontent">
-                    <p>
-                      
-                    AllServiceHub is a comprehensive housing services company that excels in providing a wide range of essential home maintenance solutions.
-                   From plumbing and painting to housekeeping, water tank cleaning, pest control, and AC repair, 
-                   they offer a one-stop solution for all household needs. Their services are distinguished by their excellent quality and reliability, 
-                   ensuring that customers can rely on them for efficient and effective solutions to their home maintenance challenges. Whether it's fixing a leaky faucet,
-                   repainting a room, or ensuring a pest-free environment, AllServiceHub is committed to delivering top-notch service to homeowners, 
-                  making them a trusted partner for maintaining and enhancing the quality of residential spaces.
-                    </p>
-                  </div>
-                  <br></br>
+                <div className="headcontent">
+                  <p>
+                    AllServiceHub is a comprehensive housing services company that excels in providing a wide range of essential home maintenance solutions. From plumbing and painting to housekeeping, water tank cleaning, pest control, and AC repair, they offer a one-stop solution for all household needs. Their services are distinguished by their excellent quality and reliability, ensuring that customers can rely on them for efficient and effective solutions to their home maintenance challenges. Whether it's fixing a leaky faucet, repainting a room, or ensuring a pest-free environment, AllServiceHub is committed to delivering top-notch service to homeowners, making them a trusted partner for maintaining and enhancing the quality of residential spaces.
+                  </p>
+                </div>
+                <br></br>
                 <div className="nav_menu_emp buttons">
                   <div>
-                    <a href="/adminalluser" className="btn btn-success">
+                    <Link to="/adminalluser" className="btn btn-success">
                       All users
-                    </a>
+                    </Link>
                   </div>
                   <div>
-                    <a href="/alladmins" className="btn btn-info">
+                    <Link to="/alladmins" className="btn btn-info">
                       All Admins
-                    </a>
+                    </Link>
                   </div>
                   <div>
-                    <a href="adminjob" className="btn btn-info">
+                    <Link to="/adminjob" className="btn btn-info">
                       Posted Job
-                    </a>
+                    </Link>
                   </div>
                   <div>
-                    <a href="/admincontact" className="btn btn-info">
+                    <Link to="/admincontact" className="btn btn-info">
                       Contact Info
-                    </a>
+                    </Link>
                   </div>
                   <div>
-                    <a href="/adminfeedback" className="btn btn-info">
+                    <Link to="/adminfeedback" className="btn btn-info">
                       Feedbacks
-                    </a>
+                    </Link>
                   </div>
                   <div>
-                    <a href="/adminlog" className="btn btn-danger">
+                    <Link to="/adminlog" className="btn btn-danger">
                       Log Out
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -76,17 +69,14 @@ const AdminHomeContainer = styled.section`
     background: url("/img/home/categories.jpg");
   }
 
-  
-  .headtag p{
-
+  .headtag p {
     margin-left: 45%;
     font-size : 50px;
     font-weight : 600;
     color : white;
   }
 
-  .headcontent p{
-
+  .headcontent p {
     color : white;
     font-size : 20px;
     font-weight : 600;
