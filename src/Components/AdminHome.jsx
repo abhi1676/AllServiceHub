@@ -34,7 +34,7 @@ export function AdminHome() {
                   </div>
                   <div>
                     <Link to="/adminjob" className="btn btn-info">
-                      Posted Job
+                      Posted Services
                     </Link>
                   </div>
                   <div>
@@ -86,4 +86,5 @@ const AdminHomeContainer = styled.section`
     display: flex;
     justify-content: space-between;
   }
+  
 `;

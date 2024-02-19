@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import Swal from "sweetalert2";
 
 //saving all user data
 const BASE_URL = 'http://localhost:8080/user';
@@ -14,18 +14,43 @@ export async function saveUser(user){
 const BASE_URL12 = 'http://localhost:8080/user/byemail';
 
 export async function checkUser(email){
-
-    return axios.get(`${BASE_URL12}/${email}`);
+    try {
+        const response = await axios.get(`${BASE_URL12}/${email}`);
+        return response;
+    } catch (error) {
+        // Handle error and trigger custom Swal alert
+        const errorMessage = error.response.data.message || 'Invalid credentials';
+        Swal.fire({
+            title: 'Try Again',
+            text: errorMessage,
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+        throw error; // Rethrow the error to propagate it further if needed
+    }
 }
+  
 
 // check admin
 
 const BASE_URL13 = 'http://localhost:8080/admin';
 
-export async function checkAdmin(email){
-
-    return axios.get(`${BASE_URL13}/${email}`);
-}
+export async function checkAdmin(email) {
+    try {
+      const response = await axios.get(`${BASE_URL13}/${email}`);
+      return response;
+    } catch (error) {
+      // Handle error and trigger custom Swal alert
+      const errorMessage = error.response.data.message || 'Invalid credentials';
+      Swal.fire({
+        title: 'Try Again',
+        text: errorMessage,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+      throw error; // Rethrow the error to propagate it further if needed
+    }
+  }
 
 
 //get user info for employer

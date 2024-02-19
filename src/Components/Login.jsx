@@ -32,6 +32,8 @@ export const Login = () => {
         setFormData({ email: "", pass: "" });
         alertMsg();
       }
+    
+      
     }
   };
 
@@ -42,6 +44,7 @@ export const Login = () => {
     if (!formData["email"]) {
       isValid = false;
       errors["email"] = "please enter email address";
+      
     }
 
     
@@ -61,6 +64,16 @@ export const Login = () => {
     });
   };
 
+  const alertMsg2 = () => {
+    Swal.fire({
+      title: "Try Again",
+      text: "Invalid Credentials ",
+      icon: "error",
+      buttons: "OK",
+    }).then(() => {
+      navigate("/login");
+    });
+  };
   return (
     <>
       <LoginContainer>
