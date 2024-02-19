@@ -1,4 +1,4 @@
-package com.digirojgar.model;
+package com.allservicehub.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

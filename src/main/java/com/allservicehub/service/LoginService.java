@@ -1,9 +1,9 @@
-package com.digirojgar.service;
+package com.allservicehub.service;
 
 import org.springframework.stereotype.Service;
 
-import com.digirojgar.model.Admin;
-import com.digirojgar.model.Login;
+import com.allservicehub.model.Admin;
+import com.allservicehub.model.Login;
 
 @Service
 public interface LoginService {

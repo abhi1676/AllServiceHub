@@ -1,9 +1,9 @@
-package com.digirojgar.dao;
+package com.allservicehub.dao;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.digirojgar.model.Feedback;
+import com.allservicehub.model.Feedback;
 
 @Repository
 public interface FeedbackDao extends CrudRepository<Feedback, Integer>{

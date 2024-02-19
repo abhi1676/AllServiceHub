@@ -1,4 +1,4 @@
-package com.digirojgar.controller;
+package com.allservicehub.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digirojgar.model.ContactUs;
-import com.digirojgar.service.ContactUsService;
+import com.allservicehub.model.ContactUs;
+import com.allservicehub.service.ContactUsService;
 
 @RestController
 @CrossOrigin

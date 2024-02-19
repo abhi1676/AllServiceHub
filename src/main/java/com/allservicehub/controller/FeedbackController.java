@@ -1,4 +1,4 @@
-package com.digirojgar.controller;
+package com.allservicehub.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digirojgar.model.Feedback;
-import com.digirojgar.service.FeedbackService;
+import com.allservicehub.model.Feedback;
+import com.allservicehub.service.FeedbackService;
 
 @RestController
 @CrossOrigin

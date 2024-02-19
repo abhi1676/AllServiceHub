@@ -1,4 +1,4 @@
-package com.digirojgar.controller;
+package com.allservicehub.controller;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.digirojgar.model.Admin;
-import com.digirojgar.model.PostJob;
-import com.digirojgar.model.User;
-import com.digirojgar.service.AdminService;
+import com.allservicehub.model.Admin;
+import com.allservicehub.model.PostJob;
+import com.allservicehub.model.User;
+import com.allservicehub.service.AdminService;
 
 @CrossOrigin
 @RestController

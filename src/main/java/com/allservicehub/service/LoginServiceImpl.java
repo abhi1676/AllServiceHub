@@ -1,11 +1,11 @@
-package com.digirojgar.service;
+package com.allservicehub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.digirojgar.dao.LoginDao;
-import com.digirojgar.model.Admin;
-import com.digirojgar.model.Login;
+import com.allservicehub.dao.LoginDao;
+import com.allservicehub.model.Admin;
+import com.allservicehub.model.Login;
 
 @Service
 public class LoginServiceImpl implements LoginService{

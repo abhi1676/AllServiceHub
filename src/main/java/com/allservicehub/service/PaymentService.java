@@ -1,8 +1,8 @@
-package com.digirojgar.service;
+package com.allservicehub.service;
 
 import org.springframework.stereotype.Service;
 
-import com.digirojgar.model.Payment;
+import com.allservicehub.model.Payment;
 
 @Service
 public interface PaymentService {

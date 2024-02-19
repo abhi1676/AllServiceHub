@@ -1,10 +1,10 @@
-package com.digirojgar.service;
+package com.allservicehub.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.digirojgar.model.User;
+import com.allservicehub.model.User;
 
 @Service
 public interface UserService {

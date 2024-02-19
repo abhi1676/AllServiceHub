@@ -23,6 +23,7 @@ export const About = () => {
                       just like you get home deliveries of your favorite products.
                     </p>
                     <div className="button">
+                    
                       <a href="http://localhost:3000/" className="btn btn-primary">
                         Know More About us 
                       </a>
@@ -100,7 +101,7 @@ export const About = () => {
 const AboutContainer = styled.section`
   .aboutc {
     margin-top: 80px;
-    
+    margin-left : 50px
   }
 
   .image-section {

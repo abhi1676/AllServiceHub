@@ -1,4 +1,4 @@
-package com.digirojgar.service;
+package com.allservicehub.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.digirojgar.dao.UserDao;
-import com.digirojgar.model.User;
+import com.allservicehub.dao.UserDao;
+import com.allservicehub.model.User;
 
 
 @Service

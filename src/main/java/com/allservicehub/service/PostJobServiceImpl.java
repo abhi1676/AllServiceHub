@@ -1,4 +1,4 @@
-package com.digirojgar.service;
+package com.allservicehub.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.digirojgar.dao.PostJobDao;
-import com.digirojgar.model.PostJob;
+import com.allservicehub.dao.PostJobDao;
+import com.allservicehub.model.PostJob;
 
 @Service
 public class PostJobServiceImpl implements PostJobService{
