@@ -205,7 +205,7 @@ export class Registration extends Component {
               <br></br>
               <div>
                 <label for="employee" className="rad1">
-                  Employee
+                  User
                 </label>
                 <input
                   type="radio"
@@ -214,7 +214,7 @@ export class Registration extends Component {
                   value="employee"
                 />
                 <label for="employer" className="rad2">
-                  Employer
+                  Technician
                 </label>
                 <input
                   type="radio"
