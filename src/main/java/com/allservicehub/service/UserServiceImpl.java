@@ -3,6 +3,7 @@ package com.allservicehub.service;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void add(User user) {
+		
 		
 		userDao.save(user);
 	}

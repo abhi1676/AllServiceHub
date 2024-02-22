@@ -80,7 +80,7 @@ export const EmployeeLogin = () => {
         <section className="back">
           <Form className="container" onSubmit={handleSubmit}>
             <div className="header">
-              <h3>Employee Login</h3>
+              <h3>Technician Login</h3>
             </div>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>

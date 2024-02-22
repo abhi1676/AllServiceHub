@@ -1,68 +1,71 @@
-import { Component } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { saveUser } from "../Service/controller";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export class UpdateProfile extends Component {
-    constructor() {
-        super();
-        this.state = {
-          formData: {},
-          defaultValue: {
-            id:"",
-            fname:"",
-            lname:"",
-            email:"",
-            dob:"",
-            mobno:"",
-            city:"",
-            district:"",
-            state:"",
-          },
-        };
-      }
-    
-      handleChange = (event) => {
-        this.setState({
-          formData: {
-            ...this.state.formData,
-            [event.target.name]: event.target.value,
-          },
-        });
-      };
-    
-      handleSubmit = async (event) => {
-        event.preventDefault();
-        const response = await saveUser(this.state.formData);
-        console.log(response.data);
-        if (response.status == 200) {
-          this.setState({
-            formData: { id:"", fname:"", lname:"", email:"", dob:"", mobno:"", city:"", district:"", state:"" },
-          });
-    
-          this.alertMsg();
-        }
-      };
-    
-      alertMsg = () =>{
-    
-        swal({
-          title: "Success!!!",
-          text: "Profile Updated Successfully",
-          icon: "success",
-          buttons: "OK",
-        })
-      }
-    render(){
+export const UpdateProfile = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    id: "",
+    fname: "",
+    lname: "",
+    email: "",
+    dob: "",
+    mobno: "",
+    city: "",
+    district: "",
+    state: ""
+  });
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const response = await saveUser(formData);
+    console.log(response.data);
+    if (response.status === 200) {
+      setFormData({
+        id: "",
+        fname: "",
+        lname: "",
+        email: "",
+        dob: "",
+        mobno: "",
+        city: "",
+        district: "",
+        state: ""
+      });
+      alertMsg();
+    }
+  };
+
+  const alertMsg = () => {
+    Swal.fire({
+      title: "Success!!!",
+      text: "Credentials Matched",
+      icon: "success",
+      buttons: "OK",
+    }).then(() => {
+      navigate("/employer");
+    });
+  };
+
   return (
     <>
       <UpdateProfileContainer>
         <section>
-          <form className="container" onSubmit={this.handleSubmit}>
+          <form className="container" onSubmit={handleSubmit}>
             <div className="heading">
               <h2>Update Profile</h2>
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="id">User id</label>
               <input
@@ -71,11 +74,11 @@ export class UpdateProfile extends Component {
                 id="id"
                 placeholder="Enter user id"
                 name="id"
-                value={this.state.formData.id}
-                onChange={this.handleChange}
+                value={formData.id}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="fname">First Name</label>
               <input
@@ -84,11 +87,11 @@ export class UpdateProfile extends Component {
                 id="fname"
                 placeholder="Enter First Name"
                 name="fname"
-                value={this.state.formData.fname}
-                onChange={this.handleChange}
+                value={formData.fname}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="lname">Last Name</label>
               <input
@@ -97,11 +100,11 @@ export class UpdateProfile extends Component {
                 id="lname"
                 placeholder="Enter Last Name"
                 name="lname"
-                value={this.state.formData.lname}
-                onChange={this.handleChange}
+                value={formData.lname}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -110,11 +113,11 @@ export class UpdateProfile extends Component {
                 id="email"
                 placeholder="Enter email id"
                 name="email"
-                value={this.state.formData.email}
-                onChange={this.handleChange}
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="dob">Date Of Birth</label>
               <input
@@ -123,11 +126,11 @@ export class UpdateProfile extends Component {
                 id="dob"
                 placeholder="Enter birth date"
                 name="dob"
-                value={this.state.formData.dob}
-                onChange={this.handleChange}
+                value={formData.dob}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="mobno">Mobile Number</label>
               <input
@@ -136,11 +139,11 @@ export class UpdateProfile extends Component {
                 id="mobno"
                 placeholder="Enter mobile number"
                 name="mobno"
-                value={this.state.formData.mobno}
-                onChange={this.handleChange}
+                value={formData.mobno}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="city">City</label>
               <input
@@ -149,11 +152,11 @@ export class UpdateProfile extends Component {
                 id="city"
                 placeholder="Enter city"
                 name="city"
-                value={this.state.formData.city}
-                onChange={this.handleChange}
+                value={formData.city}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="district">District</label>
               <input
@@ -162,11 +165,11 @@ export class UpdateProfile extends Component {
                 id="district"
                 placeholder="Enter District"
                 name="district"
-                value={this.state.formData.district}
-                onChange={this.handleChange}
+                value={formData.district}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <div className="form-group">
               <label htmlFor="state">State</label>
               <input
@@ -175,48 +178,39 @@ export class UpdateProfile extends Component {
                 id="state"
                 placeholder="Enter state"
                 name="state"
-                value={this.state.formData.state}
-                onChange={this.handleChange}
+                value={formData.state}
+                onChange={handleChange}
               />
             </div>
-            <br></br>
+            <br />
             <button type="submit" className="btn btn-dark">
-              update
+              Update
             </button>
           </form>
-          <br></br>
-          <div className="row">
-                      <div className="col">
-                        <div id="postJob" className="col-1 m-auto">
-                          <button
-                            type="submit"
-                            className="btn btn-danger mt-5"
-                          ><a href= "/employer">
-                             BACK
-                          </a>
-                           
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
+          <br />
+          <div className="row justify-content-center">
+            <div id="postJob" className="col-1 m-auto">
+              <Link to="/employer" className="btn btn-dark mt-5">
+                BACK
+              </Link>
+            </div>
+          </div>
         </section>
       </UpdateProfileContainer>
     </>
   );
-    }
-}
+};
 
 const UpdateProfileContainer = styled.section`
   section {
-    padding: 60px;
+    margin-top: 20px; 
+    padding: 50px;
     background: url("/img/home/banner.jpg");
     min-height: 140vh;
   }
 
-  h2{
-
-    margin-left : 25%;
+  h2 {
+    margin-left: 25%;
   }
 
   .container {
@@ -227,9 +221,18 @@ const UpdateProfileContainer = styled.section`
     padding: 20px;
     background-color: white;
   }
-
-  .btn{
-
-    margin-left : 40%;
+  .btn {
+    display: block;
+    margin: 0 auto; 
+    margin-top: 20px; 
   }
+
+  .row {
+    margin: 0 auto; 
+    margin-top: 0px;
+    text-align: center; 
+  }
+
 `;
+
+

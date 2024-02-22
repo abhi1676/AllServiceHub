@@ -48,12 +48,12 @@ export function Navbar() {
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <Link className="nav-link" to="/login">
-                    Employer Login
+                    User Login
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/employeelogin">
-                    Employee Login
+                    Technician Login
                   </Link>
                 </li>
                 <li className="nav-item">
