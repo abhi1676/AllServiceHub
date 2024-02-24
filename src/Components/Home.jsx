@@ -252,6 +252,8 @@ const HomeContainer = styled.section`
     background-size: cover;
     color: #fff;
     min-height: 100vh;
+    padding-top: 56px;
+  
   }
   a {
     text-decoration: none;
@@ -276,7 +278,7 @@ const HomeContainer = styled.section`
   }
   /* ============ Categories ============== */
   #category {
-   
+    padding-top: 56px;
     background-size: cover;
   }
   .heading h3 {

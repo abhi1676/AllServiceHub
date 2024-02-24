@@ -78,7 +78,7 @@ export function Navbar() {
 const NavbarContainer = styled.section`
   section {
     top: 0;
-    position: fixed;
+   position: relative;
   }
   .heading {
     margin-left: 40px;

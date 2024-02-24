@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.allservicehub.dao.UserDao;
@@ -20,7 +21,9 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void add(User user) {
 		
-		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPass());
+        user.setPass(hashedPassword);
 		userDao.save(user);
 	}
 

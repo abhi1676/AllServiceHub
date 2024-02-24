@@ -16,6 +16,12 @@ export function EmployerHome() {
     getInfo();
   }, []);
 
+  const handleLogout = () => {
+    
+    sessionStorage.clear();
+
+    
+  };
   return (
     <>
       <EmployerContainer>
@@ -64,7 +70,7 @@ export function EmployerHome() {
                     </Link>
                   </div>
                   <div>
-                    <Link to="/login" className="btn btn-danger">
+                    <Link to="/login" className="btn btn-danger" onClick={handleLogout}>
                       Log Out
                     </Link>
                   </div>

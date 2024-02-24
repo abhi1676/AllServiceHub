@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { checkUser } from "../Service/controller";
+import axios from "axios"; // Import Axios
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -25,15 +25,25 @@ export const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (validate()) {
-      const response = await checkUser(formData.email);
-      console.log(response.data);
+      try {
+        const response = await axios.post("http://localhost:8080/userlogin", formData); // Send POST request to your backend
+        console.log(response.data);
 
-      if (response.status === 200) {
-        setFormData({ email: "", pass: "" });
-        alertMsg();
+        if (response.status === 200) {
+          setFormData({ email: "", pass: "" });
+
+          // Store authentication status in session storage
+          sessionStorage.setItem("isLoggedIn", "true");
+
+          // Optionally, store user-related data in session storage
+          sessionStorage.setItem("userEmail", formData.email);
+
+          alertMsg();
+        }
+      } catch (error) {
+        console.error("Login failed:", error);
+        alertMsg2();
       }
-    
-      
     }
   };
 
@@ -44,10 +54,7 @@ export const Login = () => {
     if (!formData["email"]) {
       isValid = false;
       errors["email"] = "please enter email address";
-      
     }
-
-    
 
     setErrors(errors);
     return isValid;
@@ -74,6 +81,7 @@ export const Login = () => {
       navigate("/login");
     });
   };
+
   return (
     <>
       <LoginContainer>
@@ -115,30 +123,26 @@ export const Login = () => {
 };
 
 const LoginContainer = styled.section`
+  section {
+    padding-top: 20vh;
+  }
 
-section{
+  h3 {
+    margin-left: 20%;
+    margin-bottom: 10x;
+  }
 
-  padding-top: 20vh;
-}
+  .container {
+    width: 50vh;
+    border: solid black 2px;
+    border-radius: 10px;
+    padding: 20px;
+    height: 45vh;
+    background-color: white;
+  }
 
-h3{
-
-  margin-left : 20%;
-  margin-bottom : 10x;
-}
-.container {
-  width: 50vh;
-  border: solid black 2px;
-  border-radius: 10px;
-  padding: 20px;
-  height: 45vh;
-  background-color: white;
-}
-
-.btn{
-
-  margin-top : 20px;
-  margin-left : 35%;
-}
-
+  .btn {
+    margin-top: 20px;
+    margin-left: 35%;
+  }
 `;
